@@ -1,10 +1,12 @@
 name = "backend"
 compatibility_date = "2023-12-01"
 
-[vars]
-DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMmE4YzlhMDYtOGYzMi00NDVmLTljNmUtNzM1YzZjYmM1ZjhlIiwidGVuYW50X2lkIjoiNzg5MjkyYmM1ODIyOWZjYTM1OTYwYjcwMWRjOThhN2VhOGQ0MjYyODA4YjllYzc5YWI2YWM0NTNhM2UyNTk4ZSIsImludGVybmFsX3NlY3JldCI6IjRhZTVlNTM2LTk5YjktNGM5Zi1iNDgxLTI1NDYzNmQ2NzdiYSJ9.ugqRPNoyxcUBP4v-cbNXrqznK9qncKbT6246vsqb9Ns"
 
 # MY_VAR = "my-variable"
+[vars]
+DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMmE4YzlhMDYtOGYzMi00NDVmLTljNmUtNzM1YzZjYmM1ZjhlIiwidGVuYW50X2lkIjoiNzg5MjkyYmM1ODIyOWZjYTM1OTYwYjcwMWRjOThhN2VhOGQ0MjYyODA4YjllYzc5YWI2YWM0NTNhM2UyNTk4ZSIsImludGVybmFsX3NlY3JldCI6IjRhZTVlNTM2LTk5YjktNGM5Zi1iNDgxLTI1NDYzNmQ2NzdiYSJ9.ugqRPNoyxcUBP4v-cbNXrqznK9qncKbT6246vsqb9Ns"
+JWT_TOKEN = "This is my JWT Token"
+
 
 # [[kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"
