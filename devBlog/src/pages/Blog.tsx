@@ -1,5 +1,5 @@
-export function Blog() {
+export function Blog(){
     return<>
-    
+    Blog
     </>
 }

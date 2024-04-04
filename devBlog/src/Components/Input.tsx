@@ -5,9 +5,10 @@ type param = {
     label:string,
     placeholder:string,
     value: string,
+    type:string
     onChange: (value: string) => void
 }
-export function Input({ label, placeholder, value, onChange }:param){
+export function Input({ label, placeholder, value,type, onChange }:param){
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       onChange(e.target.value); 
     };
@@ -19,7 +20,7 @@ export function Input({ label, placeholder, value, onChange }:param){
         </label>
         <input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
+          type={type}
           placeholder={placeholder}
           value={value}
           onChange={handleChange}

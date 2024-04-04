@@ -13,6 +13,12 @@ const User =new Hono<{
 	}
 }>();
 
+User.get("/",(c)=>{
+	return c.json({
+		Server:"Healthy"
+	})
+})
+
 User.post('/signin',async (c) => {
 	const prisma = new PrismaClient({
 		datasourceUrl: c.env.DATABASE_URL,
@@ -26,7 +32,7 @@ User.post('/signin',async (c) => {
 	if(!parsedBody.success)
 	{
 		return c.json({
-			message :"wrong input",
+			msg :"wrong input",
 			Error: parsedBody.error.message
 		});
 	}
@@ -45,16 +51,16 @@ User.post('/signin',async (c) => {
 		console.log('Found user:', newUser);
 		if(!newUser)
 		{
-			c.status(403);
+			c.status(200);
 			return c.json({
-				message : "User Not Exist"
+				msg : "User Not Exist"
 			})
 		}
 		if(newUser.password != hasedPass)
 		{
-			c.status(403);
+			c.status(200);
 			return c.json({
-				message : "Password Wrong"
+				msg : "Password Wrong"
 			})
 		}
 		const jwt = await sign({id: newUser.id},c.env.JWT_TOKEN);
@@ -65,7 +71,7 @@ User.post('/signin',async (c) => {
 	  } catch (error) {
 		console.error('Error Finding user:', error);
 		return c.json({
-			message:"Error",
+			msg:"Unknown Error",
 			Error:error
 		});
 	  }
@@ -83,7 +89,7 @@ User.post('/signup',async (c) => {
 	if(!parsedBody.success)
 	{
 		return c.json({
-			message :"wrong input",
+			msg :"wrong input",
 			Error: parsedBody.error
 		});
 	}
@@ -104,7 +110,7 @@ User.post('/signup',async (c) => {
 		console.log('Created user:', newUser);
 		const jwt = await sign({id: newUser.id},c.env.JWT_TOKEN);
 		return c.json({
-			msg:"User Created",
+			msg:"Created",
 			JWT:jwt
 		});
 	  } catch (error) {
@@ -112,8 +118,6 @@ User.post('/signup',async (c) => {
 		return c.text("Error");
 	  }
 
-
-	return c.text('signin route');
 })
 
 
