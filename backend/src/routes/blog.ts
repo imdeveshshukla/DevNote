@@ -9,7 +9,10 @@ const Blog = new Hono<{
 		JWT_TOKEN : string
 	}
 }>();
-
+function getMonth(){
+	const mon = ["Jan","Feb","Mar","Apr","June","July","Aug","Sept","Oct","Nov","Dec"];
+	return mon[new Date().getMonth()-1];
+}
 Blog.use("/*",async (c,next)=>{
 	const header = c.req.header("authorization") || "";
 	const token = header.split(" ")[1];
@@ -42,6 +45,9 @@ Blog.get('/bulk',async (c) => {
 	// console.log(prisma)
 	try {
 		const users = await prisma.post.findMany();
+		users.forEach((val)=>{
+			val.authorId
+		})
 		return c.json(users);
 	  } catch (error) {
 		console.error('Error connecting to database:', error);
@@ -101,6 +107,7 @@ Blog.post('/',async (c) => {
 				authorId:Number(author),
 				title:dat.title,
 				content:dat.content,
+				date:`${getMonth()} ${new Date().getDate()} ${new Date().getFullYear()}`
 			},
 		})
 		return c.json({
