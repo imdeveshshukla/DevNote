@@ -44,7 +44,18 @@ Blog.get('/bulk',async (c) => {
 	}).$extends(withAccelerate());
 	// console.log(prisma)
 	try {
-		const users = await prisma.post.findMany();
+		const users = await prisma.post.findMany({
+			select:{
+				content:true,
+				title:true,
+				authorId:true,
+				author:{
+					select:{
+						name:true
+					}
+				}
+			}
+		});
 		users.forEach((val)=>{
 			val.authorId
 		})
