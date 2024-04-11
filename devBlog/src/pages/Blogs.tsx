@@ -5,6 +5,7 @@ import { LOCOL_BACKEND_URL } from "../config";
 
 export function Blogs(){
     const [blog,setBlog] = useState([]);
+    const [loading,setLoading] = useState(true);
     interface dataType{
         "id": Number;
         "author": {name:string};
@@ -26,15 +27,18 @@ export function Blogs(){
 
             console.log(res.data);
             setBlog(res.data);
+            setLoading(false);
         })
         .catch((err)=>{
             console.log(err);
         })
     },[])
-
-    return<div>
+    let count  =0;
+    if(loading)return(<h1>Loading....</h1>)
+    return<div className="">
     {blog.map((data:dataType)=>{
-       return <BlogPageCard name={data.author.name} date={data.date} content={data.content} title={data.title} />
+        {count++;}
+       return <BlogPageCard key={count} id={data.id} name={data.author.name} date={data.date} content={data.content} title={data.title} />
     })}
         
     </div>

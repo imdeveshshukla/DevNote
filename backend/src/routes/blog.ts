@@ -46,6 +46,7 @@ Blog.get('/bulk',async (c) => {
 	try {
 		const users = await prisma.post.findMany({
 			select:{
+				id:true,
 				content:true,
 				title:true,
 				authorId:true,
