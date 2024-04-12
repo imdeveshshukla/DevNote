@@ -10,12 +10,23 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^41.3.0",
+    "@ckeditor/ckeditor5-react": "^6.2.0",
     "@coreui/coreui": "^5.0.0",
     "@coreui/coreui-pro": "^5.0.0",
     "@coreui/react": "^5.0.0",
     "@coreui/react-pro": "^5.0.0",
-    "@imdeveshshukla/common-app": "^1.0.0",
+    "@imdeveshshukla/common-app": "^1.0.2",
+    "@tiptap/extension-color": "^2.3.0",
+    "@tiptap/extension-text-style": "^2.3.0",
+    "@tiptap/pm": "^2.3.0",
+    "@tiptap/react": "^2.3.0",
+    "@tiptap/starter-kit": "^2.3.0",
+    "@types/draft-js": "^0.11.18",
+    "@types/react-rte": "^0.16.8",
     "axios": "^1.6.8",
+    "babel-polyfill": "^6.26.0",
+    "draft-js": "^0.11.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3"
@@ -31,6 +42,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "postcss": "^8.4.38",
+    "sass": "^1.75.0",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"

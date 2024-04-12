@@ -16,7 +16,8 @@ export const SignSchema = z.object({
 export const BlogSchema = z.object({
 	title:z.string(),
 	content:z.string(),
-	thumbnail:z.string().optional()
+	thumbnail:z.string().optional(),	
+	date:z.string().optional()
 })
 
 export const BlogUpdateSchema = z.object({

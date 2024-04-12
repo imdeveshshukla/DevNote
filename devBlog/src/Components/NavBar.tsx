@@ -1,5 +1,6 @@
 import { CAvatar } from "@coreui/react";
 import '@coreui/coreui/dist/css/coreui.min.css'
+import { Link } from "react-router-dom";
 interface type{name:string;}
 export function NavBar({name}:type){
     return<div className="border-y flex justify-between py-2 px-2">
@@ -8,8 +9,12 @@ export function NavBar({name}:type){
              <div className="flex items-center">
 
                 <nav className="flex gap-2">
-                    <div className="font-medium">CreateBlog</div>
-                    <div className="font-medium">Blogs</div>
+                    <Link to={`/createBlog`}>
+                    <div className="font-medium cursor-pointer">CreateBlog</div>
+                    </Link>
+                    <Link to={`/blogs`}>
+                        <div className="font-medium cursor-pointer">Blogs</div>
+                    </Link>
                 </nav>
              </div>
 

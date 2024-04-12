@@ -45,9 +45,15 @@ export function Signup(){
             </div>
             </div>
             <div className="self-center">
+              
                     <Input label={"Name"} placeholder={"Alice Luthar"} value={postInp.name} type="text" onChange={(val:string)=>SetPostInp({...postInp,name:val})}/>
+
+
                     <Input label={"Username"} placeholder={"alice@example.com"} value={postInp.username} type="text" onChange={(val:string)=>SetPostInp({...postInp,username:val})}/>
+
+
                     <Input label={"Password"} placeholder={"Enter Your Password"} value={postInp.pass} type="password" onChange={(val:string)=>SetPostInp({...postInp,pass:val})}/>
+                    
                     <button className="bg-slate-950 w-full hover:bg-slate-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={click}>Sign Up</button>
             
             </div>
