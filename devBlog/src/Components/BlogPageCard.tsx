@@ -12,11 +12,13 @@ interface blog{
 
 export function BlogPageCard({ id,img ,name,date,title,content}:blog){
     return<Link to={`/blog/${id}`}>    
-        <div className="m-2 p-5  mx-auto md:w-3/4 w-full cursor-pointer">
+        <div className="m-2 p-3  mx-auto md:w-3/4 w-full cursor-pointer">
             <div className="flex gap-2">
                 {/* <Icon></Icon> */}
-                <CAvatar color="primary" className="bg-slate-600 px-2" textColor="white" shape="rounded" >{`${name.charAt(0)}`}</CAvatar>
-                <p className="text-sm ">{name}</p>
+                <CAvatar color="primary" className="bg-slate-700 px-2" textColor="white" shape="rounded" >{`${name.charAt(0)}`}</CAvatar>
+                <div className="flex flex-col justify-center">
+                <p className="text-sm font-black">{name}</p>
+                </div>
             </div>
             <p className="text-xs text-slate-400">{date}</p>
             <div className="p-2">

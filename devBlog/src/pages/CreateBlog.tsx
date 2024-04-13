@@ -1,13 +1,17 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { LOCOL_BACKEND_URL } from '../config';
-import { BlogInput, BlogInput } from '@imdeveshshukla/common-app';
+import { BlogInput } from '@imdeveshshukla/common-app';
+import { useNavigate } from 'react-router-dom';
+import { ShowBlogSkelton } from '../Components/ShowBlogSkelton';
 
 
 export function CreateBlog(){
-    
-    function onSubmit({title,content}:BlogInput){
-        axios.post(`${LOCOL_BACKEND_URL}/api/v1/blog/`,
+    const nav = useNavigate();
+    const [loading,setLoading] = useState(false);
+    async function onSubmit({title,content}:BlogInput){
+        setLoading(true);
+        const res = await axios.post(`${LOCOL_BACKEND_URL}/api/v1/blog`,
         {
             title,
             content
@@ -19,10 +23,12 @@ export function CreateBlog(){
                 }
             }
         )
+        console.log(res.data);
+        nav(`/blog/${res.data.blog.id}`);
     }
-
+    if(loading) return(<ShowBlogSkelton/>)
     return <div className='w-screen'>
-    <BlogInput onSubmit={onSubmit}/>
+    <BlogInput2 onSubmit={onSubmit}/>
     </div>
 }
 
@@ -32,20 +38,16 @@ interface BlogInputProps {
   onSubmit: ({title, content}:BlogInput) => void;
 }
 
-const BlogInput: React.FC<BlogInputProps> = ({ onSubmit }) => {
+const BlogInput2: React.FC<BlogInputProps> = ({ onSubmit }) => {
     const [inp,SetInp] = useState<BlogInput>({
         title:"",
         content:""
     })
-  const [title, setTitle] = useState<string>('');
-  const [content, setContent] = useState<string>('');
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(title, content);
+    onSubmit(inp);
     // Reset input fields after submission
-    setTitle('');
-    setContent('');
+    SetInp({title:"",content:""})
   };
 
   return (
@@ -59,12 +61,11 @@ const BlogInput: React.FC<BlogInputProps> = ({ onSubmit }) => {
         <input
           type="text"
           id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={inp.title}
+          onChange={(e) => SetInp({...inp, title:e.target.value})}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
           placeholder="Enter your blog title..."
-          required
-        />
+          required/>
       </div>
       {/* Content Textarea */}
       <div className="mb-4">
@@ -74,7 +75,7 @@ const BlogInput: React.FC<BlogInputProps> = ({ onSubmit }) => {
         <textarea
           id="content"
           value={inp.content}
-          onChange={(val:string) => SetInp({...inp,content: val})}
+          onChange={(e) => SetInp({...inp, content:e.target.value})}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 h-40 resize-none"
           placeholder="Write your blog content..."
           required
@@ -89,5 +90,3 @@ const BlogInput: React.FC<BlogInputProps> = ({ onSubmit }) => {
     </form>
   );
 };
-
-export default BlogInput;

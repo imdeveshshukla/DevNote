@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState,useEffect } from "react"
 import { LOCOL_BACKEND_URL } from "../config";
 import { useParams } from "react-router-dom";
+import { BlogSkelton } from "../Components/BlogSkelton";
+import { ShowBlogSkelton } from "../Components/ShowBlogSkelton";
 
 
 export function Blog(){
@@ -33,7 +35,11 @@ export function Blog(){
             console.log(err);
         })
     },[])
-    if(laoding) return("Loading.....");
+    if(laoding) return(<>
+        <ShowBlogSkelton/>
+        
+    
+    </>);
     return<div className="grid grid-cols-3 m-5 max-sm:grid-cols-2">
         <div className="col-span-2">
         <h1 className="text-2xl font-black">{blog.title}</h1>
