@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { BlogSkelton } from "../Components/BlogSkelton";
 import { ShowBlogSkelton } from "../Components/ShowBlogSkelton";
 import { ShowBlog } from "../Components/ShowBlog";
+import { RecoilRoot } from "recoil";
 
 
 export function Blog(){
@@ -39,5 +40,7 @@ export function Blog(){
     // if(laoding) return(<>
     //     <ShowBlogSkelton/>
     //     </>);
-    return <ShowBlog id={Number(id)}/>
+    return <RecoilRoot>
+        <ShowBlog id={Number(id)}/>
+        </RecoilRoot>
 }
