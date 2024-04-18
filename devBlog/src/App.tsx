@@ -5,6 +5,7 @@ import { Blogs } from './pages/Blogs'
 import { NavBar } from './Components/NavBar'
 import { Blog } from './pages/Blog'
 import { CreateBlog } from './pages/CreateBlog'
+import { Homepage } from './pages/Homepage'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <BrowserRouter>
       <NavBar name='devesh'></NavBar>
         <Routes>
+          <Route path='/' element={<Homepage/>} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/blogs" element={<Blogs />} />
