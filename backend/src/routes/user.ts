@@ -19,6 +19,8 @@ User.get("/",(c)=>{
 	})
 })
 
+// User.use('/*',(0))
+
 User.post('/signin',async (c) => {
 	const prisma = new PrismaClient({
 		datasourceUrl: c.env.DATABASE_URL,

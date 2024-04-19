@@ -7,7 +7,7 @@ export function NavBar({name}:type){
         <div className="flex gap-4">
 
                     <Link to={`/blogs`}>
-                        <p className="text-xl font-bold text-gray-800 text-center ">devBlog</p>
+                        <p className="text-xl font-bold text-gray-800 text-center ">devNotes</p>
                     </Link>
 
                     <div className="flex items-center">

@@ -38,6 +38,8 @@ Blog.use("/*",async (c,next)=>{
 	})
 })
 
+
+
 Blog.get('/bulk',async (c) => {
 	const prisma = new PrismaClient({
 		datasourceUrl: c.env.DATABASE_URL,
