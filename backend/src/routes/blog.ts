@@ -18,14 +18,22 @@ Blog.use("/*",async (c,next)=>{
 	const token = header.split(" ")[1];
 	if(token)
 	{
-		const ver = await verify(token,c.env.JWT_TOKEN);
-		if(ver.id)
-		{
-			console.log(ver.id);
-			c.set("jwtPayload",ver.id);
-			await next();
+		try{
+			const ver = await verify(token,c.env.JWT_TOKEN);
+			if(ver.id)
+			{
+				console.log(ver.id);
+				c.set("jwtPayload",ver.id);
+				await next();
+			}
+			else{
+				c.status(403);
+				return c.json({
+					msg:"User Not logged In"
+				})
+			}
 		}
-		else{
+		catch(err){
 			c.status(403);
 			return c.json({
 				msg:"User Not logged In"
@@ -77,6 +85,7 @@ Blog.get('/:id',async (c) => {
 	const prisma = new PrismaClient({
 		datasourceUrl: c.env.DATABASE_URL,
 	}).$extends(withAccelerate());
+	
 	const id = Number(c.req.param('id'))
 	
 

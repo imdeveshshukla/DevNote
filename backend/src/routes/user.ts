@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client/edge';
 import { Hono } from 'hono';
 import findHash from '../Others/findHash';
 import { SignSchema, Userbody } from '@imdeveshshukla/common-app';
-import { sign } from 'hono/jwt';
+import { sign, verify } from 'hono/jwt';
 
 
 const User =new Hono<{
@@ -19,7 +19,55 @@ User.get("/",(c)=>{
 	})
 })
 
-// User.use('/*',(0))
+User.get('/refresh',async(c)=>{
+	const prisma = new PrismaClient({
+		datasourceUrl: c.env.DATABASE_URL,
+	}).$extends(withAccelerate());
+	
+
+	const header = c.req.header("authorization") || "";
+	const token = header.split(" ")[1];
+	console.log(token);
+	
+	if(token)
+	{
+		const ver = await verify(token,c.env.JWT_TOKEN);
+		console.log(ver);
+		try{
+			if(ver.id)
+			{
+				const name = await prisma.user.findFirst({
+					where:{
+						id:ver.id
+					},
+					select:{
+						name:true
+					}
+				});
+				return c.json({
+					id:ver.id,
+					"name":name
+				})
+			}
+			else{
+				c.status(403);
+				return c.json({
+					msg:"User Not logged In"
+				})
+			}
+		}
+		catch(err){
+			c.status(403);
+			return c.json({
+				msg:"User Not logged In"
+			})
+		}
+	}
+	c.status(403);
+	return c.json({
+		msg:"User Not logged In"
+	})
+})
 
 User.post('/signin',async (c) => {
 	const prisma = new PrismaClient({

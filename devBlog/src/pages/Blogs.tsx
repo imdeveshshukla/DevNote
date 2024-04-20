@@ -3,9 +3,11 @@ import { BlogPageCard } from "../Components/BlogPageCard";
 import axios from "axios";
 import { LOCOL_BACKEND_URL } from "../config";
 import { BlogSkelton } from "../Components/BlogSkelton";
+import { useNavigate } from "react-router-dom";
 
 export function Blogs(){
     const [blog,setBlog] = useState([]);
+    const nav = useNavigate();
     const [loading,setLoading] = useState(true);
     interface dataType{
         "id": Number;
@@ -32,6 +34,7 @@ export function Blogs(){
         })
         .catch((err)=>{
             console.log(err);
+            nav("/");
         })
     },[])
     let count  =0;

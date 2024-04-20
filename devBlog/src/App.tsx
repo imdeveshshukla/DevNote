@@ -8,11 +8,10 @@ import { CreateBlog } from './pages/CreateBlog'
 import { Homepage } from './pages/Homepage'
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
-      <NavBar name='Deves'></NavBar>
+      <NavBar></NavBar>
         <Routes>
           <Route path='/' element={<Homepage/>} />
           <Route path="/signup" element={<Signup />} />
