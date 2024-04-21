@@ -5,8 +5,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { SignUpInput } from "@imdeveshshukla/common-app";
 import axios from "axios";
 import { LOCOL_BACKEND_URL } from "../config";
+import loader from '../assets/loader.png'
+import { setAuthTrue, setname } from '../redux/auth/isAuthSlice'
+import { useDispatch } from "react-redux";
+
+
 
 export function Signup(){
+
+    const dispatch = useDispatch()
     const [postInp,SetPostInp] = useState<SignUpInput>({
         name:"",
         username:"",
@@ -14,8 +21,10 @@ export function Signup(){
     })
     const navigate = useNavigate();
     const [error,SetError] = useState("Created");
+    const [loading,setLoading] = useState(false);
     async function click(){
         try{
+          setLoading(true);
             const res = await axios.post(`${LOCOL_BACKEND_URL}/api/v1/user/signup`,postInp);
             console.log(res.data);
             if(res.data.msg!="Created")
@@ -25,12 +34,15 @@ export function Signup(){
             else{
               const jwt = res.data.JWT;
               localStorage.setItem("token",jwt);
+              dispatch(setAuthTrue());
+              dispatch(setname(res.data.name));
               navigate("/blogs")
             }
           }
           catch(err){
             console.log({err});
           }
+          setLoading(false);
     }
     return(
         <div className="flex flex-col justify-center w-full h-screen">
@@ -54,7 +66,7 @@ export function Signup(){
 
                     <Input label={"Password"} placeholder={"Enter Your Password"} value={postInp.pass} type="password" onChange={(val:string)=>SetPostInp({...postInp,pass:val})}/>
                     
-                    <button className="bg-slate-950 w-full hover:bg-slate-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={click}>Sign Up</button>
+                    <button className="bg-slate-950 w-full hover:bg-slate-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={click}>{loading?<img src={loader} className="animate-spin h-5 w-5 m-auto" alt="loading..."/>:"Sign Up"}</button>
             
             </div>
 

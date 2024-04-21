@@ -55,6 +55,9 @@ Blog.get('/bulk',async (c) => {
 	// console.log(prisma)
 	try {
 		const users = await prisma.post.findMany({
+			where:{
+				authorId:c.get("jwtPayload")
+			},
 			select:{
 				id:true,
 				content:true,

@@ -4,15 +4,24 @@ import { Link, useNavigate } from "react-router-dom";
 import Heading from "../Components/Heading";
 import axios from "axios";
 import { SignInInput } from "@imdeveshshukla/common-app";
-import { BACKEND_URL, LOCOL_BACKEND_URL } from "../config";
+import { LOCOL_BACKEND_URL } from "../config";
+import loader from '../assets/loader.png'
+import { useDispatch } from 'react-redux'
+import { setAuthTrue, setname } from '../redux/auth/isAuthSlice'
 
 export function Signin(){
+  const dispatch = useDispatch()
   const navigate = useNavigate();
     const [postInp,SetPostInp] = useState<SignInInput>({
       username:"",
       pass:""
     })
+
+    
+
+    
     const [error,SetError] = useState("Signed In");
+    const [loading,setLoading] = useState(false);
     const handleUsername = (value: string) => {
         SetPostInp({
           ...postInp,
@@ -26,7 +35,9 @@ export function Signin(){
       });
     };
     async function click(){
+      setLoading(true);
       try{
+
         const res = await axios.post(`${LOCOL_BACKEND_URL}/api/v1/user/signin`,postInp);
         console.log(res.data);
         if(res.data.msg!="Signed In")
@@ -35,13 +46,16 @@ export function Signin(){
         }
         else{
           const jwt = res.data.JWT;
+          dispatch(setAuthTrue())
+          dispatch(setname(res.data.name))
           localStorage.setItem("token",jwt);
           navigate("/blogs")
         }
       }
-      catch(err){
-        console.log({err});
+      catch(err:any){
+        SetError(err);
       }
+      setLoading(false);
     }
     return<div className="flex flex-col justify-center w-full h-screen">
 
@@ -56,9 +70,9 @@ export function Signin(){
           </div>
           </div>
         <div className="self-center">
-            <Input label="Username" placeholder="abc@example.com"  value={postInp.username} type={"text"} onChange={handleUsername}/>
-            <Input label="Password" placeholder="Enter your Password" value={postInp.pass} type="password" onChange={handlePass}/>
-            <button className="bg-slate-950 w-full hover:bg-slate-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={click}>Sign In</button>
+            <Input label="Username" placeholder="alice@gmail.com"  value={postInp.username} type={"text"} onChange={handleUsername}/>
+            <Input label="Password" placeholder="12345" value={postInp.pass} type={"password"} onChange={handlePass}/>
+            <button className="bg-slate-950 w-full hover:bg-slate-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={click}>{loading?<img src={loader} className="animate-spin h-5 w-5 m-auto" alt="loading..."/>:"Sign In"}</button>
         </div>
 
     </div>

@@ -27,13 +27,11 @@ User.get('/refresh',async(c)=>{
 
 	const header = c.req.header("authorization") || "";
 	const token = header.split(" ")[1];
-	console.log(token);
-	
 	if(token)
 	{
-		const ver = await verify(token,c.env.JWT_TOKEN);
-		console.log(ver);
 		try{
+			const ver = await verify(token,c.env.JWT_TOKEN);
+			console.log(ver);
 			if(ver.id)
 			{
 				const name = await prisma.user.findFirst({
@@ -116,6 +114,7 @@ User.post('/signin',async (c) => {
 		const jwt = await sign({id: newUser.id},c.env.JWT_TOKEN);
 		return c.json({
 			msg:"Signed In",
+			name:newUser.name,
 			JWT:jwt
 		});
 	  } catch (error) {
@@ -161,11 +160,14 @@ User.post('/signup',async (c) => {
 		const jwt = await sign({id: newUser.id},c.env.JWT_TOKEN);
 		return c.json({
 			msg:"Created",
+			name:newUser.name,
 			JWT:jwt
 		});
 	  } catch (error) {
 		console.error('Error creating user:', error);
-		return c.text("Error");
+		return c.json({
+			msg : "Might Username Already Exist or Some other issue"
+		});
 	  }
 
 })

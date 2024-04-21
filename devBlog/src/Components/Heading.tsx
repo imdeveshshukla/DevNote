@@ -8,7 +8,7 @@ const Heading = ({ level, children }:props) => {
   const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements;
 
   return (
-    <HeadingTag className="text-2xl font-bold text-gray-800 mb-4 text-center">
+    <HeadingTag className="text-2xl font-bold text-gray-950 mb-4 text-center">
       {children}
     </HeadingTag>
   );

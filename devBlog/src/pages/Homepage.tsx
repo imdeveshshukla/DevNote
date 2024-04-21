@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+import img from '../assets/namaste.png'
 import { useAuth } from '../hooks/useAuth';
-import img from '../others/namaste.png'
+import { StartUp } from '../Components/StartUp';
+import parade from '../assets/parade.webp'
+import { Footer } from '../Components/Footer';
 export function Homepage(){
     const nav = useNavigate();
     const auth = useAuth();
@@ -19,10 +22,13 @@ export function Homepage(){
     {
         nav('/blogs');
     }
-    return <div className="h-96 flex flex-col justify-center">
-        <div className="block w-fit mx-auto text-center ">
-            <img src={img} alt="Namaste" className='w-60' />
-        </div>
-            <h1 className='text-center font-cinzel text-5xl'>Tame your work, organize your life</h1>
+    if(auth.isAuth)
+    {
+        nav('/blogs');
+    }
+    return <div className='py-5'>
+        <StartUp img="namaste" note='Tame your work, organize your life'/>
+        <img className='m-auto mt-2' src={parade} alt="Parade" />
+        <Footer/>
     </div>
 }

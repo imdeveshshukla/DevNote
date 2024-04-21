@@ -4,6 +4,7 @@ import axios from "axios";
 import { LOCOL_BACKEND_URL } from "../config";
 import { BlogSkelton } from "../Components/BlogSkelton";
 import { useNavigate } from "react-router-dom";
+import { StartUp } from "../Components/StartUp";
 
 export function Blogs(){
     const [blog,setBlog] = useState([]);
@@ -48,6 +49,9 @@ export function Blogs(){
         </>
 
     )
+    if(blog.length == 0)
+        return <StartUp img="welcome" note="Write your first thought..."/>
+
     return<div className="">
     {blog.map((data:dataType)=>{
         {count++;}

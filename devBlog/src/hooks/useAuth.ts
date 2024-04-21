@@ -1,10 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { LOCOL_BACKEND_URL } from "../config";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+import { setAuthTrue, setname } from "../redux/auth/isAuthSlice";
 
 export function useAuth(){
-    const [isAuth,setAuth] = useState(false);
-    const [name,setName] = useState("");
+    const dispatch = useDispatch();
+    const isAuth = useSelector((state: RootState) => state.counter.value)
+    const name = useSelector((state: RootState) => state.counter.name)
     const [loading,setLoading] = useState(false);
     const [err,setErr] = useState(null)
 
@@ -20,12 +24,12 @@ export function useAuth(){
             }
         )
 
-        
+
 
         if(res.data.id)
         {
-            setAuth(true);
-            setName(res.data.name.name)
+            dispatch(setAuthTrue());
+            dispatch(setname(res.data.name.name));
         }
         else{
             setErr(res.data.msg);
@@ -35,8 +39,7 @@ export function useAuth(){
 
       setLoading(false)
     }, [])
-    
+
 
     return { isAuth,name,loading,err }
-
 }
