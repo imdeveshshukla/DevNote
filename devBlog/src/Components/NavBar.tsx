@@ -6,10 +6,6 @@ import type { RootState } from '../redux/store'
 import { setAuthFalse } from '../redux/auth/isAuthSlice'
 
 
-type propstpe = {
-    isAuth:boolean,
-    name:string
-}
 
 export function NavBar(){
     const isAuth = useSelector((state: RootState) => state.counter.value)

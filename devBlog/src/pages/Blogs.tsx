@@ -55,7 +55,7 @@ export function Blogs(){
     return<div className="">
     {blog.map((data:dataType)=>{
         {count++;}
-       return <BlogPageCard key={count} id={data.id} name={data.author.name} date={data.date} content={data.content} title={data.title} />
+       return <BlogPageCard key={count} id={data.id} date={data.date} content={data.content} title={data.title} />
     })}
         
     </div>
