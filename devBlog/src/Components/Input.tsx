@@ -40,7 +40,7 @@ export function Input({ label, placeholder, value,type, onChange }:param){
           onChange={handleChange}
         />
         {type=="password"?<span className="flex justify-end items-end" onClick={handleToggle}>
-                  <Icon className="absolute mb-2.5 mr-1" icon={icon} size={20}/>
+                  <Icon className="absolute mb-2.5 mr-1 cursor-pointer" icon={icon} size={20}/>
               </span>:<></>}
       </div>
     );

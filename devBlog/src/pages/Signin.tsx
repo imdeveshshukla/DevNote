@@ -63,16 +63,16 @@ export function Signin(){
           <div className="self-center w-48">
 
           <Heading level="1">Sign In</Heading>
-          {error=="Signed In"?null:<div className="bg-red-600 rounded-md text-slate-100 text-center">{error}</div>}
+          {error=="Signed In"?null:<div className="bg-red-600 rounded-md text-zinc-100 text-center">{error}</div>}
           <div className="text-center">
-            <p className="p-0 m-0 inline text-xs text-center text-slate-500">Don't Have an Account?</p>
-            <Link to="/signup" className="text-xs text-slate-500 pl-1 underline">Create One</Link>
+            <p className="p-0 m-0 inline text-xs text-center text-zinc-500">Don't Have an Account?</p>
+            <Link to="/signup" className="text-xs text-zinc-500 pl-1 underline">Create One</Link>
           </div>
           </div>
         <div className="self-center">
             <Input label="Username" placeholder="alice@gmail.com"  value={postInp.username} type={"text"} onChange={handleUsername}/>
             <Input label="Password" placeholder="12345" value={postInp.pass} type={"password"} onChange={handlePass}/>
-            <button className="bg-slate-950 w-full hover:bg-slate-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={click}>{loading?<img src={loader} className="animate-spin h-5 w-5 m-auto" alt="loading..."/>:"Sign In"}</button>
+            <button className="bg-zinc-950 w-full hover:bg-zinc-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={click}>{loading?<img src={loader} className="animate-spin h-5 w-5 m-auto" alt="loading..."/>:"Sign In"}</button>
         </div>
 
     </div>

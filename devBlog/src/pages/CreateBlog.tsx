@@ -84,7 +84,7 @@ const BlogInput2: React.FC<BlogInputProps> = ({ onSubmit }) => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="bg-slate-900 hover:bg-slate-600 text-white font-bold py-2 px-4 rounded focus:outline-none">
+        className="bg-zinc-900 hover:bg-zinc-600 text-white font-bold py-2 px-4 rounded focus:outline-none">
         Publish
       </button>
     </form>

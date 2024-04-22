@@ -39,15 +39,15 @@ export function NavBar(){
                 <nav className="flex gap-2">
                 {isAuth ? (
                         <Link to="/createBlog">
-                            <button className="text-xs font-bold cursor-pointer text-white bg-slate-900 hover:bg-slate-600 focus:ring-4 focus:ring-blue-100 rounded-lg px-2 py-1">Create</button>
+                            <button className="text-xs font-bold cursor-pointer text-white bg-zinc-900 hover:bg-zinc-600 focus:ring-4 focus:ring-blue-100 rounded-lg px-2 py-1">Create</button>
                         </Link>
                     ) : (
                         <>
                             <Link to="/signup">
-                                <button className="text-xs font-bold cursor-pointer text-white bg-slate-900 hover:bg-slate-600 focus:ring-4 focus:ring-blue-100 rounded-lg px-2 py-1">Sign Up</button>
+                                <button className="text-xs font-bold cursor-pointer text-white bg-zinc-900 hover:bg-zinc-600 focus:ring-4 focus:ring-blue-100 rounded-lg px-2 py-1">Sign Up</button>
                             </Link>
                             <Link to="/signin">
-                                <button className="text-xs font-bold cursor-pointer text-white bg-slate-900 hover:bg-slate-600 focus:ring-4 focus:ring-blue-100 rounded-lg px-2 py-1">Sign In</button>
+                                <button className="text-xs font-bold cursor-pointer text-white bg-zinc-900 hover:bg-zinc-600 focus:ring-4 focus:ring-blue-100 rounded-lg px-2 py-1">Sign In</button>
                             </Link>
                         </>
                     )}

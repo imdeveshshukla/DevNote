@@ -26,9 +26,9 @@ export function Homepage(){
     {
         nav('/blogs');
     }
-    return <div className='py-5'>
+    return <div className='py-2 flex flex-col'>
         <StartUp img="namaste" note='Tame your work, organize your life'/>
-        <img className='m-auto mt-2' src={parade} alt="Parade" />
+        <img className='m-auto' src={parade} alt="Parade" />
         <Footer/>
     </div>
 }

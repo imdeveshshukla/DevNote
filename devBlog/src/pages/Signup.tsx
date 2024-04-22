@@ -50,10 +50,10 @@ export function Signup(){
         <div className="self-center w-64">
 
             <Heading level="1">Create an account</Heading>
-            {error=="Created"?null:<div className="bg-red-600 rounded-md text-slate-100 text-center">{error}</div>}
+            {error=="Created"?null:<div className="bg-red-600 rounded-md text-zinc-100 text-center">{error}</div>}
             <div className="text-center">
-                <p className="p-0 m-0 inline text-xs text-slate-500">Already Have an Account?</p>
-                <Link to="/signin" className="text-xs text-slate-500 pl-1 underline">Login</Link>
+                <p className="p-0 m-0 inline text-xs text-zinc-500">Already Have an Account?</p>
+                <Link to="/signin" className="text-xs text-zinc-500 pl-1 underline">Login</Link>
             </div>
             </div>
             <div className="self-center">
@@ -66,7 +66,7 @@ export function Signup(){
 
                     <Input label={"Password"} placeholder={"Enter Your Password"} value={postInp.pass} type="password" onChange={(val:string)=>SetPostInp({...postInp,pass:val})}/>
                     
-                    <button className="bg-slate-950 w-full hover:bg-slate-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={click}>{loading?<img src={loader} className="animate-spin h-5 w-5 m-auto" alt="loading..."/>:"Sign Up"}</button>
+                    <button className="bg-zinc-950 w-full hover:bg-zinc-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={click}>{loading?<img src={loader} className="animate-spin h-5 w-5 m-auto" alt="loading..."/>:"Sign Up"}</button>
             
             </div>
 
