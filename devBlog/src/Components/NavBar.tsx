@@ -1,11 +1,9 @@
 import '@coreui/coreui/dist/css/coreui.min.css'
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { LOCOL_BACKEND_URL } from '../config';
-import axios from 'axios';
+import {  useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../redux/store'
-import { setAuthTrue,setAuthFalse } from '../redux/auth/isAuthSlice'
+import { setAuthFalse } from '../redux/auth/isAuthSlice'
 
 
 type propstpe = {

@@ -1,16 +1,13 @@
-import { CAvatar } from "@coreui/react";
 import { Link } from "react-router-dom";
 
 interface blog{
     id:Number
-    img?:string;
-    name:string;
     date:string;
     title:string;
     content:string;
 }
 
-export function BlogPageCard({ id,img ,name,date,title,content}:blog){
+export function BlogPageCard({ id,date,title,content}:blog){
     return<Link to={`/blog/${id}`}>    
         <div className="m-2 p-3  mx-auto md:w-3/4 w-full cursor-pointer">
             <div className="flex gap-2">

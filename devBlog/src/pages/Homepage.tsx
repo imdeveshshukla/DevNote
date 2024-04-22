@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import img from '../assets/namaste.png'
 import { useAuth } from '../hooks/useAuth';
 import { StartUp } from '../Components/StartUp';
 import parade from '../assets/parade.webp'
