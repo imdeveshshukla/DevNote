@@ -10,7 +10,7 @@ This project is a note-taking web application.
 ## Technology Stack
 
 - **Frontend**: React js.
-- **Backend**:  Hono Framework and deployed on Cloudflare Workers.
+- **Backend**:  Hono Framework and deployed on Cloudflare Workers(Serverless).
 - **Frontend State Management**: Redux Toolkit
 
 
