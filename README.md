@@ -12,6 +12,7 @@ This project is a note-taking web application.
 - **Frontend**: React js.
 - **Backend**:  Hono Framework and deployed on Cloudflare Workers(Serverless).
 - **Frontend State Management**: Redux Toolkit
+- **DB**: PostgreSql
 
 
 ## Getting Started
